@@ -18,6 +18,7 @@
 		1844722E1C108D7500CBB74E /* RecipeBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844722B1C108D7500CBB74E /* RecipeBasicCell.m */; };
 		1844722F1C108D7500CBB74E /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844722D1C108D7500CBB74E /* RecipeViewController.m */; };
 		184472311C1092E500CBB74E /* setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184472301C1092E500CBB74E /* setting.plist */; };
+		186C01C61C19B16B009DF01C /* TaboosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C01C51C19B16B009DF01C /* TaboosViewController.m */; };
 		8761D0DA5AE1EE121917C849 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08982EBE595618342286EF05 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		1844722C1C108D7500CBB74E /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
 		1844722D1C108D7500CBB74E /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
 		184472301C1092E500CBB74E /* setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = setting.plist; sourceTree = "<group>"; };
+		186C01C41C19B16B009DF01C /* TaboosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaboosViewController.h; sourceTree = "<group>"; };
+		186C01C51C19B16B009DF01C /* TaboosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaboosViewController.m; sourceTree = "<group>"; };
 		8DCBFCD796810E8863A2ADD2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A1F8517A02C05743872BCC7B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +127,8 @@
 		184471F61C108BEF00CBB74E /* RecipeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				186C01C41C19B16B009DF01C /* TaboosViewController.h */,
+				186C01C51C19B16B009DF01C /* TaboosViewController.m */,
 				1844722A1C108D7500CBB74E /* RecipeBasicCell.h */,
 				1844722B1C108D7500CBB74E /* RecipeBasicCell.m */,
 				1844722C1C108D7500CBB74E /* RecipeViewController.h */,
@@ -361,6 +366,7 @@
 			files = (
 				184471FC1C108BEF00CBB74E /* AppDelegate.m in Sources */,
 				1844722E1C108D7500CBB74E /* RecipeBasicCell.m in Sources */,
+				186C01C61C19B16B009DF01C /* TaboosViewController.m in Sources */,
 				184471F91C108BEF00CBB74E /* main.m in Sources */,
 				184290611C172DB000EE06DD /* TwoViewController.m in Sources */,
 				1844722F1C108D7500CBB74E /* RecipeViewController.m in Sources */,
