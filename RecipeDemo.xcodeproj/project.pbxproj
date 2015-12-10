@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1842905E1C15D07300EE06DD /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842905D1C15D07300EE06DD /* main.storyboard */; };
+		184290611C172DB000EE06DD /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184290601C172DB000EE06DD /* TwoViewController.m */; };
 		184471F91C108BEF00CBB74E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184471F81C108BEF00CBB74E /* main.m */; };
 		184471FC1C108BEF00CBB74E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184471FB1C108BEF00CBB74E /* AppDelegate.m */; };
 		184472041C108BF000CBB74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184472031C108BF000CBB74E /* Assets.xcassets */; };
@@ -38,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		08982EBE595618342286EF05 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1842905D1C15D07300EE06DD /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = main.storyboard; path = ../main.storyboard; sourceTree = "<group>"; };
+		1842905F1C172DB000EE06DD /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
+		184290601C172DB000EE06DD /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		184471F41C108BEF00CBB74E /* RecipeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184471F81C108BEF00CBB74E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		184471FA1C108BEF00CBB74E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,11 +128,14 @@
 				1844722B1C108D7500CBB74E /* RecipeBasicCell.m */,
 				1844722C1C108D7500CBB74E /* RecipeViewController.h */,
 				1844722D1C108D7500CBB74E /* RecipeViewController.m */,
+				1842905F1C172DB000EE06DD /* TwoViewController.h */,
+				184290601C172DB000EE06DD /* TwoViewController.m */,
 				184471FA1C108BEF00CBB74E /* AppDelegate.h */,
 				184471FB1C108BEF00CBB74E /* AppDelegate.m */,
 				184472031C108BF000CBB74E /* Assets.xcassets */,
 				184472051C108BF000CBB74E /* LaunchScreen.storyboard */,
 				184472081C108BF000CBB74E /* Info.plist */,
+				1842905D1C15D07300EE06DD /* main.storyboard */,
 				184471F71C108BEF00CBB74E /* Supporting Files */,
 			);
 			path = RecipeDemo;
@@ -278,6 +286,7 @@
 				184472071C108BF000CBB74E /* LaunchScreen.storyboard in Resources */,
 				184472311C1092E500CBB74E /* setting.plist in Resources */,
 				184472041C108BF000CBB74E /* Assets.xcassets in Resources */,
+				1842905E1C15D07300EE06DD /* main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +362,7 @@
 				184471FC1C108BEF00CBB74E /* AppDelegate.m in Sources */,
 				1844722E1C108D7500CBB74E /* RecipeBasicCell.m in Sources */,
 				184471F91C108BEF00CBB74E /* main.m in Sources */,
+				184290611C172DB000EE06DD /* TwoViewController.m in Sources */,
 				1844722F1C108D7500CBB74E /* RecipeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

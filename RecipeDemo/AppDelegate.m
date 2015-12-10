@@ -19,15 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithStyle:UITableViewStylePlain];
-    
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recipeVC];
-    
-    self.window.rootViewController = navVC;
-    
-    [self.window makeKeyAndVisible] ;
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    
+//    RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithStyle:UITableViewStylePlain];
+//    
+//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recipeVC];
+//    
+//    self.window.rootViewController = navVC;
+//    
+//    [self.window makeKeyAndVisible] ;
     
     return YES;
 }

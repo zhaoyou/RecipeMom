@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSArray *recipes;
 @property (nonatomic, strong) NSURLSession  *session;
-
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 
 
@@ -23,6 +22,19 @@
 static NSString * const RWBasicCellIdentifier = @"recipeId";
 
 @implementation RecipeViewController
+
+
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithStyle:UITableViewStylePlain];
+    
+    if (self) {
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        _session = [NSURLSession sessionWithConfiguration:configuration];
+        self.offscreenCells = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
 
 
 -(id) initWithStyle:(UITableViewStyle)style
@@ -43,11 +55,23 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 112.0f;
     
-    self.title = @"菜谱排行";
+    
     
     [self.tableView registerClass:[RecipeBasicCell class] forCellReuseIdentifier:RWBasicCellIdentifier];
 
     [self fetchRecipe];
+    
+    self.navigationItem.title = @"wowowowo";
+
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    
+    NSLog(@" title: %@", self.title);
+    NSLog(@" navigationController: %@", self.navigationController);
+    NSLog(@" navigationItem: %@", self.navigationItem);
+    NSLog(@" navigationItem: %@", self.navigationItem.title);
+    
 }
 
 
@@ -103,7 +127,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection %ld", [self.recipes count]);
+    //NSLog(@"numberOfRowsInSection %ld", [self.recipes count]);
     return [self.recipes count];
 }
 
@@ -126,7 +150,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     [cell updateConstraintsIfNeeded];
     
     
-    NSLog(@" cellForRowAtIndexPath: %@", indexPath);
+    //NSLog(@" cellForRowAtIndexPath: %@", indexPath);
     
     return cell;
 }
@@ -183,7 +207,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     
     height += 1;
     
-    NSLog(@"heightForRowAtIndexPath%lf, %@", height, indexPath);
+    //NSLog(@"heightForRowAtIndexPath%lf, %@", height, indexPath);
     
     return height;
 
