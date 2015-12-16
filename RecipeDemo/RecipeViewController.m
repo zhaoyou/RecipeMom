@@ -52,26 +52,19 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[RecipeBasicCell class] forCellReuseIdentifier:RWBasicCellIdentifier];
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 112.0f;
+
+    NSLog(@"navigationItem: %@", self.navigationItem.title);
+
+    self.navigationItem.title = @"wowowowo";
     
     
-    
-    [self.tableView registerClass:[RecipeBasicCell class] forCellReuseIdentifier:RWBasicCellIdentifier];
 
     [self fetchRecipe];
-    
-    self.navigationItem.title = @"wowowowo";
 
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    
-    NSLog(@" title: %@", self.title);
-    NSLog(@" navigationController: %@", self.navigationController);
-    NSLog(@" navigationItem: %@", self.navigationItem);
-    NSLog(@" navigationItem: %@", self.navigationItem.title);
-    
 }
 
 
@@ -127,7 +120,6 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //NSLog(@"numberOfRowsInSection %ld", [self.recipes count]);
     return [self.recipes count];
 }
 
@@ -148,9 +140,6 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
-    
-    
-    //NSLog(@" cellForRowAtIndexPath: %@", indexPath);
     
     return cell;
 }
@@ -206,9 +195,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     height += 1;
-    
-    //NSLog(@"heightForRowAtIndexPath%lf, %@", height, indexPath);
-    
+        
     return height;
 
 }

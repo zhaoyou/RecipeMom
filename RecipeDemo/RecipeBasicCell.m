@@ -10,9 +10,7 @@
 #import "Masonry.h"
 
 @interface RecipeBasicCell()
-
 @property (nonatomic, assign) BOOL didSetupConstraints;
-
 @end
 
 @implementation RecipeBasicCell

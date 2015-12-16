@@ -8,14 +8,20 @@
 
 #import "TaboosViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TabooCell.h"
 
 
 @interface TaboosViewController ()
 
 @property (nonatomic, strong) NSMutableArray *taboos;
 @property (nonatomic, strong) NSURLSession *session;
+@property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 
 @end
+
+
+static NSString *kCustomCellID = @"tabooId";
+
 
 @implementation TaboosViewController
 
@@ -26,6 +32,7 @@
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         _session = [NSURLSession sessionWithConfiguration:configuration];
+        _offscreenCells = [NSMutableDictionary  dictionary];
     }
     return self;
 }
@@ -34,6 +41,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.tableView registerClass:[TabooCell class] forCellReuseIdentifier:kCustomCellID];
+
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 120.0f;
+    
+    
     self.navigationItem.title = @"bababa";
     [self fetchTaboos];
 
@@ -66,7 +80,7 @@
                 if (!err) {
                     //NSLog(@"taboos: %@", jsonData);
                     self.taboos = jsonData;
-                    NSLog(@"taboos count: %ld", [self.taboos count]);
+                    //NSLog(@"taboos count: %ld", [self.taboos count]);
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                         [self.tableView reloadData];
@@ -92,7 +106,6 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection %ld", [self.taboos count]);
     return [self.taboos count];
 }
 
@@ -103,36 +116,68 @@
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *kCustomCellID = @"tabooId";
     
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:kCustomCellID];
+    TabooCell *cell = (TabooCell *)[tableView dequeueReusableCellWithIdentifier:kCustomCellID];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:kCustomCellID];
+        cell = [[TabooCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:kCustomCellID];
     }
     
-    NSDictionary *data = [self.taboos objectAtIndex:indexPath.row];
-    cell.textLabel.text = [data valueForKey:@"title"];
-    NSArray *items = (NSArray *)[data valueForKey:@"items"];
-    cell.detailTextLabel.text = [items componentsJoinedByString:@","];
+    [self configruationCell:cell atIndexPath:indexPath];
     
-    NSURL *url = [NSURL URLWithString:[data valueForKey:@"imageSrc"]];
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     
-    // [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    //  NSLog(@"url: %@", url);
-    
-    [cell.imageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"db3.jpg"]];
-    
-    NSLog(@" tableView cellForRow...");
     return cell;
 }
 
+-(void) configruationCell: (TabooCell *)cell atIndexPath: (NSIndexPath *) indexPath
+{
+    
+    NSDictionary *data = [self.taboos objectAtIndex:indexPath.row];
+    cell.title.text = [data valueForKey:@"title"];
+    NSArray *items = (NSArray *)[data valueForKey:@"items"];
+    NSString *reason = [data valueForKey:@"reason"];
+    [reason stringByAppendingString:[items componentsJoinedByString:@","]];
+    cell.names.text = reason;//[items componentsJoinedByString:@","];
+    
+    NSURL *url = [NSURL URLWithString:[data valueForKey:@"imageSrc"]];
+    
+    [cell.picView setImage:nil];
+    [cell.picView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"db3.jpg"]];
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TabooCell *cell = [self.offscreenCells objectForKey:kCustomCellID];
+    
+    if (!cell) {
+        cell = [[TabooCell alloc] init];
+        [self.offscreenCells setObject:cell forKey:kCustomCellID];
+    }
+    
+    [self configruationCell:cell atIndexPath:indexPath];
+    
+    
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    
+    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(cell.bounds));
+    
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    height += 1;
+    
+    //NSLog(@"heightForRowAtIndexPath%lf, %@", height, indexPath);
+    
+    return height;
+    
+}
+
 
 @end
