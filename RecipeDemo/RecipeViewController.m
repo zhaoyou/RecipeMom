@@ -59,7 +59,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 
     NSLog(@"navigationItem: %@", self.navigationItem.title);
 
-    self.navigationItem.title = @"wowowowo";
+    self.navigationItem.title = @"Recipe Title";
     
     
 
@@ -71,48 +71,54 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 
 -(void) fetchRecipe
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"setting" ofType:@"plist"];
-    
-    NSDictionary *setting = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    // NSURL
-    NSURL *downloadUrl =
-        [NSURL URLWithString: [NSString stringWithFormat:@"%@api/recipes", [setting objectForKey:@"API_BASE_URL"] ] ];
-    
-    [[self.session dataTaskWithURL:downloadUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            
-            NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
-            
-            if (res.statusCode == 200) {
-                
-                NSError *err;
-                
-                NSArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
-                
-                if (!err) {
-                   // NSLog(@"%@", jsonData);
-                    self.recipes = jsonData;
-                   // NSLog(@"recipes count %ld", [self.recipes count]);
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                        [self.tableView reloadData];
-                    });
-                    
-                } else {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JSon Parse Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                    [alertView show];
-                }
-            }
-            
-        } else {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alertView show];
-            
-        }
-    }] resume];
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"setting" ofType:@"plist"];
+//    
+//    NSDictionary *setting = [[NSDictionary alloc] initWithContentsOfFile:path];
+//    
+//    // NSURL
+//    NSURL *downloadUrl =
+//        [NSURL URLWithString: [NSString stringWithFormat:@"%@api/recipes", [setting objectForKey:@"API_BASE_URL"] ] ];
+//    
+//    [[self.session dataTaskWithURL:downloadUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (!error) {
+//            
+//            NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
+//            
+//            if (res.statusCode == 200) {
+//                
+//                NSError *err;
+//                
+//                NSArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+//                
+//                if (!err) {
+//                   // NSLog(@"%@", jsonData);
+//                    self.recipes = jsonData;
+//                   // NSLog(@"recipes count %ld", [self.recipes count]);
+//                    dispatch_sync(dispatch_get_main_queue(), ^{
+//                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//                        [self.tableView reloadData];
+//                    });
+//                    
+//                } else {
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JSon Parse Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                    [alertView show];
+//                }
+//            }
+//            
+//        } else {
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            
+//        }
+//    }] resume];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"recipe" ofType:@"txt"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *err;
+    NSMutableArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+    self.recipes = jsonData;
+    [self.tableView reloadData];
 }
 
 
@@ -134,6 +140,10 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 //    return cell;
     
     RecipeBasicCell *cell = [self.tableView dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[RecipeBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:RWBasicCellIdentifier];
+    }
    
     [self configruationCell:cell atIndexPath:indexPath];
     

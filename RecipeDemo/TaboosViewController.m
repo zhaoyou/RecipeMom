@@ -47,8 +47,9 @@ static NSString *kCustomCellID = @"tabooId";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0f;
     
-    
-    self.navigationItem.title = @"bababa";
+    NSLog(@"navigationItem: %@", self.navigationItem.title);
+
+    self.navigationItem.title = @"Taboos Title";
     [self fetchTaboos];
 
 }
@@ -56,49 +57,55 @@ static NSString *kCustomCellID = @"tabooId";
 
 -(void) fetchTaboos
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"setting" ofType:@"plist"];
-    
-    NSDictionary *setting = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    // NSURL
-    NSURL *downloadUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@api/taboos", [setting objectForKey:@"API_BASE_URL"]]];
-    
-    
-    [[self.session dataTaskWithURL:downloadUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            
-            NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
-            
-            if (res.statusCode == 200) {
-                
-                NSError *err;
-                
-                NSMutableArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
-                
-                if (!err) {
-                    //NSLog(@"taboos: %@", jsonData);
-                    self.taboos = jsonData;
-                    //NSLog(@"taboos count: %ld", [self.taboos count]);
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                        [self.tableView reloadData];
-                    });
-                    
-                } else {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JSon Parse Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                    [alertView show];
-                }
-            }
-            
-        } else {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alertView show];
-            
-        }
-    }] resume];
-    
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"setting" ofType:@"plist"];
+//    
+//    NSDictionary *setting = [[NSDictionary alloc] initWithContentsOfFile:path];
+//    
+//    // NSURL
+//    NSURL *downloadUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@api/taboos", [setting objectForKey:@"API_BASE_URL"]]];
+//    
+//    
+//    [[self.session dataTaskWithURL:downloadUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (!error) {
+//            
+//            NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
+//            
+//            if (res.statusCode == 200) {
+//                
+//                NSError *err;
+//                
+//                NSMutableArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+//                
+//                if (!err) {
+//                    //NSLog(@"taboos: %@", jsonData);
+//                    self.taboos = jsonData;
+//                    //NSLog(@"taboos count: %ld", [self.taboos count]);
+//                    dispatch_sync(dispatch_get_main_queue(), ^{
+//                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//                        [self.tableView reloadData];
+//                    });
+//                    
+//                } else {
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JSon Parse Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                    [alertView show];
+//                }
+//            }
+//            
+//        } else {
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            
+//        }
+//    }] resume];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"taboo" ofType:@"txt"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *err;
+    NSMutableArray *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+    self.taboos = jsonData;
+    [self.tableView reloadData];
 }
 
 

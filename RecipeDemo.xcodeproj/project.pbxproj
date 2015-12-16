@@ -20,6 +20,8 @@
 		184472311C1092E500CBB74E /* setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184472301C1092E500CBB74E /* setting.plist */; };
 		186C01C61C19B16B009DF01C /* TaboosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C01C51C19B16B009DF01C /* TaboosViewController.m */; };
 		186C01C91C19C094009DF01C /* TabooCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C01C81C19C094009DF01C /* TabooCell.m */; };
+		1883BD901C21A550009BCA18 /* taboo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1883BD8F1C21A550009BCA18 /* taboo.txt */; };
+		1883BD921C21A5EE009BCA18 /* recipe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1883BD911C21A5EE009BCA18 /* recipe.txt */; };
 		8761D0DA5AE1EE121917C849 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08982EBE595618342286EF05 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		186C01C51C19B16B009DF01C /* TaboosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaboosViewController.m; sourceTree = "<group>"; };
 		186C01C71C19C094009DF01C /* TabooCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabooCell.h; sourceTree = "<group>"; };
 		186C01C81C19C094009DF01C /* TabooCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabooCell.m; sourceTree = "<group>"; };
+		1883BD8F1C21A550009BCA18 /* taboo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = taboo.txt; sourceTree = "<group>"; };
+		1883BD911C21A5EE009BCA18 /* recipe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = recipe.txt; sourceTree = "<group>"; };
 		8DCBFCD796810E8863A2ADD2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A1F8517A02C05743872BCC7B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,8 +158,10 @@
 		184471F71C108BEF00CBB74E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1883BD911C21A5EE009BCA18 /* recipe.txt */,
 				184472301C1092E500CBB74E /* setting.plist */,
 				184471F81C108BEF00CBB74E /* main.m */,
+				1883BD8F1C21A550009BCA18 /* taboo.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -293,7 +299,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1883BD921C21A5EE009BCA18 /* recipe.txt in Resources */,
 				184472071C108BF000CBB74E /* LaunchScreen.storyboard in Resources */,
+				1883BD901C21A550009BCA18 /* taboo.txt in Resources */,
 				184472311C1092E500CBB74E /* setting.plist in Resources */,
 				184472041C108BF000CBB74E /* Assets.xcassets in Resources */,
 				1842905E1C15D07300EE06DD /* main.storyboard in Resources */,
