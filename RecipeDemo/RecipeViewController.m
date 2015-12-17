@@ -31,23 +31,23 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         _session = [NSURLSession sessionWithConfiguration:configuration];
-        self.offscreenCells = [NSMutableDictionary dictionary];
+        _offscreenCells = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 
--(id) initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    
-    if (self) {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-        _session = [NSURLSession sessionWithConfiguration:configuration];
-        self.offscreenCells = [NSMutableDictionary dictionary];
-    }
-    return self;
-}
+//-(id) initWithStyle:(UITableViewStyle)style
+//{
+//    self = [super initWithStyle:style];
+//    
+//    if (self) {
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+//        _session = [NSURLSession sessionWithConfiguration:configuration];
+//        _offscreenCells = [NSMutableDictionary dictionary];
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -139,7 +139,7 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
 {
 //    return cell;
     
-    RecipeBasicCell *cell = [self.tableView dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
+    RecipeBasicCell *cell = (RecipeBasicCell *)[self.tableView dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
     
     if (cell == nil) {
         cell = [[RecipeBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:RWBasicCellIdentifier];
@@ -165,9 +165,9 @@ static NSString * const RWBasicCellIdentifier = @"recipeId";
     
     // Some subtitles can be really long, so only display the
     // first 200 characters
-    if (subtitle.length > 200) {
-        subtitle = [NSString stringWithFormat:@"%@...", [subtitle substringToIndex:200]];
-    }
+//    if (subtitle.length > 200) {
+//        subtitle = [NSString stringWithFormat:@"%@...", [subtitle substringToIndex:200]];
+//    }
     
     [cell.brief setText:subtitle];
     

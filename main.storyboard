@@ -32,7 +32,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKJ-Jo-Xzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1201" y="-88"/>
+            <point key="canvasLocation" x="1001" y="-96"/>
         </scene>
         <!--Recipe-->
         <scene sceneID="3yA-LO-Eaq">
@@ -78,7 +78,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FnP-a7-WeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="1242"/>
+            <point key="canvasLocation" x="984" y="779"/>
         </scene>
         <!--Taboos-->
         <scene sceneID="wwM-Ql-Hva">
@@ -95,7 +95,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npU-iU-xF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1307"/>
+            <point key="canvasLocation" x="510" y="779"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jyy-EG-hGV">

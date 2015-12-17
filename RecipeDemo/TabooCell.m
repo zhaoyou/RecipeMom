@@ -29,7 +29,7 @@
     if (self) {
         
         self.title = [UILabel new];
-        self.title.numberOfLines = 0;
+        self.title.numberOfLines = 1;
         self.title.lineBreakMode = NSLineBreakByTruncatingTail;
         self.title.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
         [self.contentView addSubview:self.title];
@@ -37,6 +37,7 @@
         self.names = [UILabel new];
         self.names.lineBreakMode = NSLineBreakByTruncatingTail;
         self.names.numberOfLines = 3;
+        self.names.textColor= [UIColor grayColor];
         self.names.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         [self.contentView addSubview:self.names];
         
